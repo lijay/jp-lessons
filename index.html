@@ -112,6 +112,28 @@
     vertical-align: top;
   }
   th { color: #555; font-weight: 600; }
+
+  .demo-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  @media (min-width: 640px) {
+    .demo-links { grid-template-columns: 1fr 1fr; }
+  }
+  .demo-link {
+    display: block;
+    text-decoration: none;
+    color: #222;
+    background: #f7faf8;
+    border: 1px solid #d7f0e0;
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .demo-link:hover { background: #eef8f1; }
+  .demo-link strong { display: block; color: #048c3c; margin-bottom: 2px; }
+  .demo-link span { font-size: .9rem; color: #666; }
 </style>
 </head>
 <body>
@@ -134,6 +156,32 @@
       「ゲーム感覚」と継続の動機をつくり、さらに先生本人を企画の中心に置くことで、
       一般の語学アプリでは出せない親近感をつくる提案です。
     </p>
+  </section>
+
+
+  <section class="card">
+    <h2>UI サンプル（LINE 風モック）</h2>
+    <p>
+      バッジとマイページの見え方確認用です。スマホ幅で開くのがおすすめ。
+    </p>
+    <div class="demo-links">
+      <a class="demo-link" href="./mockups/" target="_blank" rel="noopener">
+        <strong>サンプル一覧</strong>
+        <span>モックの目次ページ</span>
+      </a>
+      <a class="demo-link" href="./mockups/profile.html" target="_blank" rel="noopener">
+        <strong>マイページ（個人ページ）</strong>
+        <span>レベル・XP・最新バッジ・スタンプ・挑戦状</span>
+      </a>
+      <a class="demo-link" href="./mockups/badges.html" target="_blank" rel="noopener">
+        <strong>バッジ一覧</strong>
+        <span>獲得済み／未獲得のバッジウォール</span>
+      </a>
+      <a class="demo-link" href="./mockups/badge-unlock.html" target="_blank" rel="noopener">
+        <strong>バッジ解除画面</strong>
+        <span>レッスン後の祝福＋先生メッセージ</span>
+      </a>
+    </div>
   </section>
 
   <section class="card">
@@ -290,7 +338,7 @@
     </div>
 
     <div class="note-item">
-      <div class="note-title">⚠️ 日本語ガチャ（抽選／ランダム大奖） <span class="tag warn">信頼・コンプライアンス</span></div>
+      <div class="note-title">⚠️ 日本語ガチャ（抽選／ランダムな大きな特典） <span class="tag warn">信頼・コンプライアンス</span></div>
       <p class="why">
         <strong>理由：</strong>ギャンブル感が出て専門性の信頼を損ないやすい。現金同等の特典だと規制・プラットフォーム方針にも注意。
         やるなら「毎日1問ミニクイズ＋たまにポイント2倍」程度に留め、抽選機にはしない。
@@ -347,6 +395,7 @@
       <li>体験／継続チャレンジ、事前タスク、間違いリベンジ、テーマレッスン解除を追加</li>
       <li>ガチャ、共同イベント、硬い毎日ストリーク、早期スキル図などは備考へ移動し理由を明記</li>
       <li>ページにバージョンと作成日を表示し、旧版へリンク可能に</li>
+      <li>バッジ／マイページの LINE 風 UI サンプルへのリンクを追加</li>
     </ul>
   </section>
 

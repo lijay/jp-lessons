@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>マイページ · LINEモック</title>
+<style>
+  :root {
+    --line: #06C755;
+    --bg: #f0f2f5;
+    --card: #fff;
+    --text: #111;
+    --muted: #8e8e93;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: #222;
+    color: var(--text);
+  }
+  .phone {
+    max-width: 390px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--bg);
+    position: relative;
+    padding-bottom: 72px;
+  }
+  .status {
+    height: 44px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-size: .8rem;
+    font-weight: 600;
+    border-bottom: 1px solid #eaeaea;
+  }
+  .nav {
+    background: #fff;
+    padding: 10px 16px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #eee;
+  }
+  .back { color: var(--line); font-size: 1.4rem; line-height: 1; }
+  .nav h1 { font-size: 1.05rem; margin: 0; flex: 1; text-align: center; margin-right: 24px; }
+  .hero {
+    background: linear-gradient(160deg, #06C755 0%, #05a848 55%, #048c3c 100%);
+    color: #fff;
+    padding: 24px 20px 28px;
+  }
+  .row { display: flex; gap: 14px; align-items: center; }
+  .avatar {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: #fff; color: #06C755; display: grid; place-items: center;
+    font-weight: 800; font-size: 1.3rem; border: 3px solid rgba(255,255,255,.5);
+  }
+  .name { font-size: 1.2rem; font-weight: 700; margin: 0 0 2px; }
+  .sub { opacity: .9; font-size: .85rem; }
+  .stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 18px;
+  }
+  .stat {
+    background: rgba(255,255,255,.18);
+    border-radius: 12px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .stat b { display: block; font-size: 1.15rem; }
+  .stat span { font-size: .72rem; opacity: .9; }
+  .section { padding: 16px; }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  }
+  .card h2 {
+    margin: 0 0 12px;
+    font-size: .95rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .card h2 a { color: var(--line); font-size: .8rem; font-weight: 600; text-decoration: none; }
+  .xp-bar {
+    height: 10px; background: #e8e8e8; border-radius: 999px; overflow: hidden; margin: 8px 0;
+  }
+  .xp-bar > i { display:block; height:100%; width:68%; background: linear-gradient(90deg,#06C755,#34d876); }
+  .meta { display:flex; justify-content:space-between; color:var(--muted); font-size:.8rem; }
+  .badges {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center;
+  }
+  .badge {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .badge .icon {
+    width: 52px; height: 52px; border-radius: 16px;
+    display: grid; place-items: center; font-size: 1.4rem;
+    background: #f3faf5; border: 1.5px solid #d7f0e0;
+  }
+  .badge.locked .icon {
+    background: #f2f2f2; border-color: #e5e5e5; filter: grayscale(1); opacity: .55;
+  }
+  .badge .label { font-size: .68rem; color: #444; line-height: 1.2; height: 2.4em; }
+  .stamp-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  }
+  .stamp {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 2px dashed #d0d0d0;
+    display: grid; place-items: center;
+    color: #bbb; font-size: .75rem; background: #fafafa;
+  }
+  .stamp.on {
+    border: none;
+    background: #e8f8ee;
+    color: #06C755;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .stamp.reward {
+    border: 2px solid #ffd56a;
+    background: #fff8e6;
+    color: #c48900;
+    font-size: .7rem;
+    font-weight: 700;
+  }
+  .challenge {
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .challenge .dot {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: #fff3cd; display: grid; place-items: center; flex-shrink: 0;
+  }
+  .challenge p { margin: 0; font-size: .9rem; }
+  .challenge small { color: var(--muted); }
+  .btn {
+    display: block; text-align: center; margin-top: 10px;
+    background: var(--line); color: #fff; border-radius: 999px;
+    padding: 10px; font-weight: 700; text-decoration: none; font-size: .9rem;
+  }
+  .tabbar {
+    position: fixed; left: 50%; transform: translateX(-50%);
+    bottom: 0; width: 100%; max-width: 390px;
+    background: #fff; border-top: 1px solid #eaeaea;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+    font-size: .68rem; color: #999; text-align: center;
+  }
+  .tabbar div { padding: 4px; }
+  .tabbar .on { color: var(--line); font-weight: 700; }
+  .tabbar .ico { font-size: 1.15rem; display:block; margin-bottom: 2px; }
+  .note {
+    max-width: 390px; margin: 12px auto 0; color: #aaa; font-size: .75rem; text-align: center; padding: 0 16px 24px;
+  }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="status"><span>9:41</span><span>LINE App</span><span>100%</span></div>
+  <div class="nav"><span class="back">‹</span><h1>マイページ</h1></div>
+
+  <div class="hero">
+    <div class="row">
+      <div class="avatar">美</div>
+      <div>
+        <p class="name">美咲さん</p>
+        <div class="sub">会話 Lv.7 · 文法 Lv.5</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>12</b><span>受講回数</span></div>
+      <div class="stat"><b>1,240</b><span>ポイント</span></div>
+      <div class="stat"><b>8</b><span>バッジ</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="card">
+      <h2>レベル &amp; XP</h2>
+      <div style="font-weight:700;">レベル 9</div>
+      <div class="xp-bar"><i></i></div>
+      <div class="meta"><span>XP 680 / 1000</span><span>次まで 320</span></div>
+    </div>
+
+    <div class="card">
+      <h2>最新のバッジ <a href="./badges.html">すべて見る ›</a></h2>
+      <div class="badges">
+        <div class="badge"><div class="icon">🌱</div><div class="label">初めての一歩</div></div>
+        <div class="badge"><div class="icon">🔥</div><div class="label">三日坊主じゃない</div></div>
+        <div class="badge"><div class="icon">🗣️</div><div class="label">おしゃべり王</div></div>
+        <div class="badge locked"><div class="icon">👑</div><div class="label">N2 Survivor</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>スタンプカード <span style="font-size:.8rem;color:#8e8e93;font-weight:500;">5 / 8</span></h2>
+      <div class="stamp-grid">
+        <div class="stamp on">✓</div>
+        <div class="stamp on">✓</div>
+        <div class="stamp on">✓</div>
+        <div class="stamp on">✓</div>
+        <div class="stamp on">✓</div>
+        <div class="stamp">6</div>
+        <div class="stamp">7</div>
+        <div class="stamp reward">+10分</div>
+      </div>
+      <p style="margin:10px 0 0;font-size:.8rem;color:#8e8e93;">あと3回で「レッスン10分延長」クーポン</p>
+    </div>
+
+    <div class="card">
+      <h2>今週の挑戦状</h2>
+      <div class="challenge">
+        <div class="dot">✉️</div>
+        <div>
+          <p><strong>先生より：</strong>「〜てしまう」を使って文を3つ作ろう</p>
+          <small>期限：日曜 23:59 · 報酬 +80pt</small>
+          <a class="btn" href="#">提出する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabbar">
+    <div><span class="ico">🏠</span>ホーム</div>
+    <div><span class="ico">🎯</span>チャレンジ</div>
+    <div><span class="ico">🏅</span>バッジ</div>
+    <div class="on"><span class="ico">👤</span>マイページ</div>
+  </div>
+</div>
+<p class="note">モック · 企画確認用 · 実データではありません</p>
+</body>
+</html>

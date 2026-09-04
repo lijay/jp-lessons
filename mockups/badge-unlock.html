@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>バッジ解除 · LINEモック</title>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; background:#222; color:#111; }
+  .phone {
+    max-width:390px; margin:0 auto; min-height:100vh;
+    background: linear-gradient(180deg, #06C755 0%, #049e42 40%, #f0f2f5 40%);
+    position:relative; padding:44px 20px 32px;
+  }
+  .status { position:absolute; top:0; left:0; right:0; height:44px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; font-size:.8rem; font-weight:600; color:#fff; }
+  .card {
+    margin-top: 72px;
+    background:#fff; border-radius:24px; padding:32px 24px 24px;
+    text-align:center; box-shadow:0 12px 40px rgba(0,0,0,.12);
+  }
+  .badge-big {
+    width:96px; height:96px; margin:-64px auto 16px; border-radius:28px;
+    background:linear-gradient(145deg,#fff,#e8f8ee); border:3px solid #fff;
+    box-shadow:0 8px 24px rgba(6,199,85,.25);
+    display:grid; place-items:center; font-size:2.6rem;
+  }
+  h1 { font-size:1.35rem; margin:0 0 8px; }
+  .sub { color:#666; font-size:.95rem; margin:0 0 18px; line-height:1.5; }
+  .reward {
+    background:#f3faf5; border-radius:14px; padding:12px; margin-bottom:18px;
+    font-size:.9rem;
+  }
+  .reward strong { color:#048c3c; }
+  .btn {
+    display:block; background:#06C755; color:#fff; text-decoration:none;
+    border-radius:999px; padding:14px; font-weight:700; margin-bottom:10px;
+  }
+  .btn.ghost { background:#fff; color:#06C755; border:1.5px solid #06C755; }
+  .chat {
+    margin-top:18px; background:#fff; border-radius:16px; padding:14px;
+    text-align:left; box-shadow:0 1px 4px rgba(0,0,0,.04);
+  }
+  .chat .from { font-size:.75rem; color:#8e8e93; margin-bottom:6px; }
+  .bubble {
+    background:#e8f8ee; border-radius:14px 14px 14px 4px; padding:10px 12px;
+    font-size:.9rem; display:inline-block; max-width:90%;
+  }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="status"><span>9:41</span><span>LINE</span><span>100%</span></div>
+  <div class="card">
+    <div class="badge-big">🗣️</div>
+    <h1>バッジ解除！</h1>
+    <p class="sub">「おしゃべり王」を獲得しました。<br>会話チャレンジ 10回クリア、お疲れさまです！</p>
+    <div class="reward">報酬：<strong>+100 ポイント</strong> · XP +50</div>
+    <a class="btn" href="./badges.html">バッジ一覧を見る</a>
+    <a class="btn ghost" href="./profile.html">マイページへ</a>
+  </div>
+  <div class="chat">
+    <div class="from">先生からのメッセージ</div>
+    <div class="bubble">美咲さん、先週の口頭練習すごく良かったです！この調子でいきましょう 🎉</div>
+  </div>
+</div>
+</body>
+</html>

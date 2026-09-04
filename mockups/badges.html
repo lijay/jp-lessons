@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>バッジ一覧 · LINEモック</title>
+<style>
+  :root { --line:#06C755; --bg:#f0f2f5; --muted:#8e8e93; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; background:#222; color:#111; }
+  .phone { max-width:390px; margin:0 auto; min-height:100vh; background:var(--bg); padding-bottom:24px; }
+  .status { height:44px; background:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 16px; font-size:.8rem; font-weight:600; border-bottom:1px solid #eaeaea; }
+  .nav { background:#fff; padding:10px 16px 14px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #eee; }
+  .back { color:var(--line); font-size:1.4rem; text-decoration:none; }
+  .nav h1 { font-size:1.05rem; margin:0; flex:1; text-align:center; margin-right:24px; }
+  .summary {
+    margin:14px 16px; background:#fff; border-radius:14px; padding:14px 16px;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow:0 1px 4px rgba(0,0,0,.04);
+  }
+  .summary b { color:var(--line); font-size:1.2rem; }
+  .filters { display:flex; gap:8px; padding:0 16px 10px; overflow-x:auto; }
+  .chip { background:#fff; border:1px solid #e5e5e5; border-radius:999px; padding:6px 12px; font-size:.8rem; white-space:nowrap; }
+  .chip.on { background:#e8f8ee; border-color:#06C755; color:#048c3c; font-weight:700; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:0 16px; }
+  .card {
+    background:#fff; border-radius:16px; padding:16px 12px 14px; text-align:center;
+    box-shadow:0 1px 4px rgba(0,0,0,.04);
+  }
+  .card.locked { opacity:.72; }
+  .icon {
+    width:64px; height:64px; margin:0 auto 10px; border-radius:18px;
+    display:grid; place-items:center; font-size:1.8rem;
+    background:#f3faf5; border:1.5px solid #d7f0e0;
+  }
+  .card.locked .icon { background:#f2f2f2; border-color:#e5e5e5; filter:grayscale(1); }
+  .title { font-weight:700; font-size:.9rem; margin-bottom:4px; }
+  .desc { font-size:.72rem; color:var(--muted); line-height:1.4; min-height:2.8em; }
+  .pill {
+    display:inline-block; margin-top:8px; font-size:.68rem; font-weight:700;
+    padding:3px 8px; border-radius:999px; background:#e8f8ee; color:#048c3c;
+  }
+  .card.locked .pill { background:#f0f0f0; color:#999; }
+  .section-label { padding:16px 16px 8px; font-size:.8rem; color:var(--muted); font-weight:600; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="status"><span>9:41</span><span>LINE App</span><span>100%</span></div>
+  <div class="nav"><a class="back" href="./profile.html">‹</a><h1>バッジ</h1></div>
+
+  <div class="summary">
+    <div>獲得バッジ</div>
+    <div><b>8</b> / 16</div>
+  </div>
+
+  <div class="filters">
+    <div class="chip on">すべて</div>
+    <div class="chip">獲得済み</div>
+    <div class="chip">未獲得</div>
+    <div class="chip">会話</div>
+    <div class="chip">継続</div>
+  </div>
+
+  <div class="section-label">最近の獲得</div>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🗣️</div>
+      <div class="title">おしゃべり王</div>
+      <div class="desc">会話チャレンジを10回クリア</div>
+      <div class="pill">09/01 獲得</div>
+    </div>
+    <div class="card">
+      <div class="icon">🔥</div>
+      <div class="title">三日坊主じゃない！</div>
+      <div class="desc">7日連続で学習アクション</div>
+      <div class="pill">08/28 獲得</div>
+    </div>
+  </div>
+
+  <div class="section-label">すべて</div>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🌱</div>
+      <div class="title">初めての一歩</div>
+      <div class="desc">初回レッスンを完了</div>
+      <div class="pill">獲得済み</div>
+    </div>
+    <div class="card">
+      <div class="icon">📚</div>
+      <div class="title">文法マスター</div>
+      <div class="desc">文法チャレンジ20回</div>
+      <div class="pill">獲得済み</div>
+    </div>
+    <div class="card">
+      <div class="icon">🎤</div>
+      <div class="title">声出しスタート</div>
+      <div class="desc">音声チャレンジ初提出</div>
+      <div class="pill">獲得済み</div>
+    </div>
+    <div class="card">
+      <div class="icon">🗓️</div>
+      <div class="title">今月皆勤</div>
+      <div class="desc">当月の予約レッスンを全て出席</div>
+      <div class="pill">獲得済み</div>
+    </div>
+    <div class="card locked">
+      <div class="icon">👑</div>
+      <div class="title">N2 Survivor</div>
+      <div class="desc">JLPT N2 合格を報告</div>
+      <div class="pill">未獲得</div>
+    </div>
+    <div class="card locked">
+      <div class="icon">⚔️</div>
+      <div class="title">先生を倒せ！</div>
+      <div class="desc">先生バトルに3回勝利</div>
+      <div class="pill">あと2勝</div>
+    </div>
+    <div class="card locked">
+      <div class="icon">🌸</div>
+      <div class="title">季節マスター</div>
+      <div class="desc">季節ミッションを4つクリア</div>
+      <div class="pill">2 / 4</div>
+    </div>
+    <div class="card locked">
+      <div class="icon">🎁</div>
+      <div class="title">紹介ヒーロー</div>
+      <div class="desc">友だち紹介で正式受講1名</div>
+      <div class="pill">未獲得</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
